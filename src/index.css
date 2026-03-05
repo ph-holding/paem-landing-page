@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: theme('colors.background');
+    color: theme('colors.primary');
+    font-family: theme('fontFamily.sans');
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .architectural-layout {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  
+  .brutalist-border {
+    border: 1px solid theme('colors.primary');
+  }
+  
+  .hover-primary {
+    transition: color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  }
+}
+
+/* Custom Selection */
+::selection {
+  background-color: theme('colors.primary');
+  color: theme('colors.surface');
+}
+
+/* Hide scrollbar for cleaner look if requested, usually nice in brutalist/editorial */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.background');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.primary');
+}
