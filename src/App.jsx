@@ -98,7 +98,9 @@ const Footer = () => {
             <span className="md:block">© {new Date().getFullYear()} PAEM Real Estate.</span>
             <span className="md:block">Todos los derechos reservados.</span>
           </h4>
-          <p className="font-mono text-secondary text-sm">Zaragoza, España</p>
+          <a target="_blank" href="https://maps.app.goo.gl/JiZkSsgzseuiE24v6" className="font-mono hover:text-primary transition-colors text-secondary text-sm">
+            Zaragoza, España
+          </a>
         </div>
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-12 font-sans text-sm text-secondary">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
