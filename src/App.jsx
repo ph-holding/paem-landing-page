@@ -10,6 +10,17 @@ gsap.registerPlugin(ScrollTrigger);
 import bg1 from './paem-assets/backgrounds/bg-1.jpg';
 import bg2 from './paem-assets/backgrounds/bg-2.jpg';
 import bg3 from './paem-assets/backgrounds/bg-3.jpg';
+import lmImg1 from './paem-assets/projects/la-muela/img-01.jpg';
+import lmImg2 from './paem-assets/projects/la-muela/img-02.jpg';
+import lmImg3 from './paem-assets/projects/la-muela/img-03.jpg';
+import lmImg4 from './paem-assets/projects/la-muela/img-04.jpg';
+import lmImg5 from './paem-assets/projects/la-muela/img-05.jpg';
+import lmImg6 from './paem-assets/projects/la-muela/img-06.jpg';
+import lmImg7 from './paem-assets/projects/la-muela/img-07.jpg';
+import lmImgType1 from './paem-assets/projects/la-muela/plm-01.jpg';
+import lmImgType2 from './paem-assets/projects/la-muela/plm-02.jpg';
+import lmImgType3 from './paem-assets/projects/la-muela/plm-03.jpg';
+import lmImgType4 from './paem-assets/projects/la-muela/plm-04.jpg';
 import projectLm from './paem-assets/backgrounds/project-lm.jpg';
 import emaPfp from './assets/ema-pfp.jpg';
 import linkedinIcon from './assets/icons/linkedin.svg';
@@ -406,7 +417,7 @@ const ProjectDetailPage = () => (
         </div>
         <div className="md:col-span-8">
           <p className="font-sans text-2xl md:text-4xl leading-snug tracking-tight font-light">
-            Residential development located near Zaragoza with multiple housing types ranging from studios to multi-bedroom duplex apartments.
+            Desarrollo residencial de 37 viviendas ubicado cerca de Zaragoza, con múltiples tipologías que van desde estudios hasta apartamentos dúplex de varios dormitorios.
           </p>
         </div>
       </div>
@@ -415,12 +426,12 @@ const ProjectDetailPage = () => (
     {/* Big Image Gallery */}
     <div className="w-full px-6 md:px-12 pb-24 md:pb-40">
       <div className="max-w-[100rem] mx-auto grid grid-cols-1 gap-6 md:gap-12">
-        <img src={bg2} alt="Interior look" className="w-full aspect-video object-cover" />
+        <img src={lmImg1} alt="Interior look" className="w-full aspect-video object-cover" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-          <img src={bg3} alt="Kitchen detail" className="w-full aspect-[4/5] md:aspect-square object-cover" />
-          <img src={bg1} alt="Staircase detail" className="w-full aspect-[4/5] md:aspect-square object-cover" />
+          <img src={lmImg6} alt="Kitchen detail" className="w-full aspect-[4/5] md:aspect-square object-cover" />
+          <img src={lmImg3} alt="Staircase detail" className="w-full aspect-[4/5] md:aspect-square object-cover" />
         </div>
-        <img src={bg2} alt="Balcony view" className="w-full aspect-[21/9] object-cover" />
+        <img src={lmImg4} alt="Balcony view" className="w-full aspect-[21/9] object-cover" />
       </div>
     </div>
 
@@ -428,13 +439,12 @@ const ProjectDetailPage = () => (
     <div className="bg-primary text-surface py-24 md:py-40 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-sans text-4xl md:text-6xl tracking-tight mb-20 border-b border-surface/20 pb-12">Tipologías</h2>
-        
         <div className="grid grid-cols-1 gap-24">
           {[
-            { tag: "01", title: "Estudio", desc: "Espacio fluido con iluminación máxima y distribución eficiente." },
-            { tag: "02", title: "Estándar", desc: "Programa arquitectónico completo, ideal para uso residencial convencional." },
-            { tag: "03", title: "Dúplex 2 dormitorios", desc: "Doble altura, separación clara entre zona de día y zona de noche." },
-            { tag: "04", title: "Full Dúplex 3 dormitorios", desc: "La superficie máxima, con amplitud estructural y acabados premium." }
+            { tag: "01", title: "Estudio", desc: "Espacio fluido con iluminación máxima y distribución eficiente.", img: lmImgType1 },
+            { tag: "02", title: "Estándar", desc: "Programa arquitectónico completo, ideal para uso residencial convencional.", img: lmImgType2 },
+            { tag: "03", title: "Dúplex 2 dormitorios", desc: "Doble altura, separación clara entre zona de día y zona de noche.", img: lmImgType3 },
+            { tag: "04", title: "Full Dúplex 3 dormitorios", desc: "La superficie máxima, con amplitud estructural y acabados premium.", img: lmImgType4 }
           ].map((type, idx) => (
             <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
               <div className="md:col-span-4 border-t border-surface/20 pt-6">
@@ -445,7 +455,7 @@ const ProjectDetailPage = () => (
               <div className="md:col-span-8">
                 {/* Fallback to generic unsplash for apartment plans/rooms if none available */}
                 <img 
-                  src={`https://images.unsplash.com/photo-${1500000000000 + idx * 10000}?q=80&w=1200&auto=format&fit=crop`} 
+                  src={type.img} 
                   alt={type.title} 
                   className="w-full grayscale opacity-80 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 hover:mix-blend-normal transition-all duration-700 object-cover aspect-video" 
                 />
