@@ -93,7 +93,7 @@ const Navbar = () => {
         <span className="md:block hidden">PAEM Real Estate</span>
       </Link>
       <div className="flex items-center gap-6 md:gap-8 text-sm font-medium text-white">
-        <Link to="/projects" className="hover:opacity-60 transition-opacity">Proyectos</Link>
+        <Link to="/proyectos" className="hover:opacity-60 transition-opacity">Proyectos</Link>
         <a href="#contacto" className="hover:opacity-60 transition-opacity">Contacto</a>
       </div>
     </nav>
@@ -121,9 +121,9 @@ const Footer = () => {
             <a target="_blank" href="https://www.linkedin.com/company/paemrealestate" className="hover:text-primary transition-colors flex items-center gap-2 group">
               <img src={facebookIcon} alt="Facebook" className="w-4 h-4 transition-all duration-300 group-hover:brightness-0" />
             </a>
-            <a href="#" className="hover:text-primary transition-colors">Términos & Condiciones</a>
-            <a href="#" className="hover:text-primary transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-primary transition-colors">Cookies</a>
+            <Link to="/terminos-condiciones" className="hover:text-primary transition-colors">Términos & Condiciones</Link>
+            <Link to="/politica-privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
+            <Link to="/politica-cookies" className="hover:text-primary transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
@@ -501,6 +501,244 @@ const HomePage = () => {
   );
 };
 
+// Terms & Conditions Page
+const TermsPage = () => {
+  const sections = [
+    {
+      title: "1. Información del titular del sitio web",
+      content: "Titular: PAEM Real Estate S.L.\nCIF: B02998029\nDomicilio: Zaragoza, España\nCorreo electrónico: compliance@paem.es\nTeléfono: +34 672 730 794"
+    },
+    {
+      title: "2. Objeto del sitio web",
+      content: "El presente sitio web tiene como finalidad ofrecer información sobre los servicios y actividades desarrolladas por PAEM Real Estate, incluyendo promoción inmobiliaria, rehabilitación de viviendas, alquiler y venta de inmuebles. \n\nLa información contenida en este sitio web tiene carácter informativo y orientativo."
+    },
+    {
+      title: "3. Condiciones de uso",
+      content: "El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación de las presentes condiciones de uso. \nEl usuario se compromete a hacer un uso adecuado del sitio web y a no utilizarlo para:\n\n\t- realizar actividades ilícitas o contrarias a la buena fe\n\t- provocar daños en los sistemas del sitio web\n\t- introducir virus o software malicioso\n\t- intentar acceder a datos restringidos"
+    },
+    {
+      title: "4. Propiedad intelectual",
+      content: "Todos los contenidos del sitio web, incluyendo textos, imágenes, diseños, logotipos, marcas y código fuente, son propiedad de PAEM Real Estate o de terceros autorizados y están protegidos por la legislación vigente en materia de propiedad intelectual e industrial.\n\nQueda prohibida la reproducción, distribución o modificación de dichos contenidos sin autorización expresa del titular."
+    },
+    {
+      title: "5. Exclusión de responsabilidad",
+      content: "PAEM Real Estate no se responsabiliza de:\n\n\t- posibles errores en la información publicada\n\t- interrupciones del servicio del sitio web\n\t- daños derivados del uso del sitio web\n\nLa empresa se reserva el derecho a modificar los contenidos del sitio web en cualquier momento."
+    },
+    {
+      title: "6. Exactitud de la información de proyectos",
+      content: "La información relativa a proyectos inmobiliarios mostrada en este sitio web tiene carácter meramente informativo.\n\nLas superficies, características, imágenes, planos, renders o descripciones de las viviendas pueden estar sujetos a modificaciones por motivos técnicos, legales o comerciales.\n\nEn ningún caso la información publicada constituye una oferta contractual."
+    },
+    {
+      title: "7. Enlaces externos",
+      content: "El sitio web puede contener enlaces a sitios web de terceros.\n\nPAEM Real Estate no se responsabiliza del contenido de dichos sitios ni de sus políticas de privacidad."
+    },
+    {
+      title: "8. Protección de datos",
+      content: (
+        <span>
+          El tratamiento de los datos personales se rige por lo dispuesto en la{' '}
+          <Link to="/politica-privacidad" className="underline hover:opacity-60 transition-opacity">
+            Política de Privacidad
+          </Link>{' '}
+          del sitio web, cumpliendo estrictamente con la normativa vigente en España.
+        </span>
+      )
+    },
+    {
+      title: "9. Legislación aplicable",
+      content: "Las presentes condiciones generales se regirán e interpretarán de acuerdo con la legislación y jurisdicción española."
+    },
+    {
+      title: "10. Modificaciones",
+      content: "PAEM Real Estate se reserva el derecho exclusivo de efectuar, sin previo aviso, las modificaciones que considere oportunas en las presentes condiciones o en la propia web."
+    }
+  ];
+
+  return (
+    <div className="pt-32 min-h-[80vh] bg-background">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
+        <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-8 leading-none">Términos y Condiciones</h1>
+        <p className="font-sans text-secondary text-lg mb-20 font-light">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+        
+        <div className="flex flex-col gap-16">
+          {sections.map((sec, i) => (
+            <div key={i} className="border-t border-border pt-8">
+              <h2 className="font-sans text-2xl tracking-tight mb-6 font-medium text-primary">{sec.title}</h2>
+              <p className={`font-sans text-lg text-primary/80 font-light leading-relaxed ${typeof sec.content === 'string' ? 'whitespace-pre-line' : ''}`}>
+                {sec.content}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Privacy Policy Page
+const PrivacyPolicyPage = () => {
+  const sections = [
+    {
+      title: "1. Información general",
+      content: "El presente documento establece la Política de Privacidad de PAEM Real Estate, en cumplimiento de la normativa vigente en materia de protección de datos personales."
+    },
+    {
+      title: "2. Responsable del tratamiento",
+      content: "Titular: PAEM Real Estate S.L.\nCIF: B02998029\nDomicilio: Zaragoza, España\nCorreo electrónico: compliance@paem.es\nTeléfono: +34 672 730 794"
+    },
+    {
+      title: "3. Datos personales que se recogen",
+      content: "PAEM Real Estate podrá recopilar los siguientes datos personales a través del sitio web:\n\n\t- nombre\n\t- correo electrónico\n\t- número de teléfono\n\t- cualquier información facilitada voluntariamente por el usuario mediante contacto directo"
+    },
+    {
+      title: "4. Finalidad del tratamiento",
+      content: "Los datos personales recogidos se utilizarán para:\n\n\t- responder a consultas realizadas por los usuarios\n\t- proporcionar información sobre proyectos inmobiliarios\n\t- gestionar comunicaciones con clientes o potenciales clientes"
+    },
+    {
+      title: "5. Base jurídica",
+      content: "La base jurídica para el tratamiento de los datos es el consentimiento del usuario, obtenido a través de los formularios de contacto."
+    },
+    {
+      title: "6. Conservación de los datos",
+      content: "Los datos personales se conservarán únicamente durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos o mientras exista una obligación legal de conservación."
+    },
+    {
+      title: "7. Cesión de datos a terceros",
+      content: "Los datos personales no se cederán a terceros salvo en los siguientes casos:\n\n- cuando exista obligación legal\n- cuando sea necesario para la prestación de servicios vinculados a la actividad de la empresa"
+    },
+    {
+      title: "8. Derechos del usuario",
+      content: (
+        <span>
+          El usuario puede ejercer en cualquier momento los siguientes derechos:
+          <br />
+          - derecho de acceso
+          <br />
+          - derecho de rectificación
+          <br />
+          - derecho de supresión
+          <br />
+          - derecho de limitación del tratamiento
+          <br />
+          - derecho de oposición
+          <br />
+          - derecho a la portabilidad de los datos 
+          <br />
+          Para ejercer estos derechos, el usuario puede enviar una solicitud a:
+          <br />
+          <br />
+          <a className="hover:underline" href="mailto:contacto@paem.es">contacto@paem.es</a>
+          <br />
+          <br />
+          También tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD).</strong>
+        </span>
+      )
+    },
+    {
+      title: "9. Plazo de conservación",
+      content: "Los datos personales se conservarán durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos."
+    },
+    {
+      title: "10. Seguridad",
+      content: "PAEM Real Estate ha adoptado las medidas de seguridad necesarias para garantizar la confidencialidad y seguridad de los datos personales."
+    },
+    {
+      title: "11. Legislación aplicable",
+      content: "Las presentes condiciones generales se regirán e interpretarán de acuerdo con la legislación y jurisdicción española."
+    },
+    {
+      title: "12. Cambios en la política de privacidad",
+      content: "PAEM Real Estate se reserva el derecho de modificar la presente política de privacidad para adaptarla a novedades legislativas o cambios en la actividad del sitio web."
+    }
+  ];
+
+  return (
+    <div className="pt-32 min-h-[80vh] bg-background">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
+        <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-8 leading-none">Política de Privacidad</h1>
+        <p className="font-sans text-secondary text-lg mb-20 font-light">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+        
+        <div className="flex flex-col gap-16">
+          {sections.map((sec, i) => (
+            <div key={i} className="border-t border-border pt-8">
+              <h2 className="font-sans text-2xl tracking-tight mb-6 font-medium text-primary">{sec.title}</h2>
+              <p className={`font-sans text-lg text-primary/80 font-light leading-relaxed ${typeof sec.content === 'string' ? 'whitespace-pre-line' : ''}`}>
+                {sec.content}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Cookies Policy
+const CookiesPolicyPage = () => {
+  const sections = [
+    {
+      title: "1. Qué son las cookies",
+      content: "Las cookies son pequeños archivos de texto que se almacenan en el dispositivo del usuario al visitar un sitio web y que permiten recordar información sobre la navegación."
+    },
+    {
+      title: "2. Tipos de cookies utilizadas",
+      content: (
+        <span>
+          Este sitio web puede utilizar los siguientes tipos de cookies:
+          <br />
+          <br />
+          <strong>Cookies técnicas</strong>
+          <br />
+          Permiten el funcionamiento básico del sitio web y la navegación.
+          <br />
+          <br />
+          <strong>Cookies de análisis</strong>
+          <br />
+          Permiten analizar el comportamiento de los usuarios en el sitio web con el fin de mejorar la experiencia de navegación.
+        </span>
+      )
+    },
+    {
+      title: "3. Cookies de terceros",
+      content: "El sitio web puede utilizar servicios de terceros que recopilan información con fines estadísticos. \n\nEstos servicios pueden utilizar cookies propias."
+    },
+    {
+      title: "4. Gestión de cookies",
+      content: "El usuario puede configurar su navegador para aceptar, bloquear o eliminar las cookies instaladas en su dispositivo. \n\nLas instrucciones para gestionar cookies se encuentran en la configuración de cada navegador."
+    },
+    {
+      title: "5. Desactivación de cookies",
+      content: "La desactivación de algunas cookies puede afectar al correcto funcionamiento del sitio web." 
+    },
+    {
+      title: "6. Cambios en la política de cookies",
+      content: "PAEM Real Estate podrá modificar la presente política de cookies para adaptarla a cambios legislativos o técnicos." 
+    }
+  ]
+
+  return (
+    <div className="pt-32 min-h-[80vh] bg-background">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
+        <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-8 leading-none">Política de Cookies</h1>
+        <p className="font-sans text-secondary text-lg mb-20 font-light">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+        
+        <div className="flex flex-col gap-16">
+          {sections.map((sec, i) => (
+            <div key={i} className="border-t border-border pt-8">
+              <h2 className="font-sans text-2xl tracking-tight mb-6 font-medium text-primary">{sec.title}</h2>
+              <p className={`font-sans text-lg text-primary/80 font-light leading-relaxed ${typeof sec.content === 'string' ? 'whitespace-pre-line' : ''}`}>
+                {sec.content}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+
 // Main App Container
 function App() {
   return (
@@ -511,8 +749,11 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/projects/la-muela" element={<ProjectDetailPage />} />
+            <Route path="/proyectos" element={<ProjectsPage />} />
+            <Route path="/proyectos/la-muela" element={<ProjectDetailPage />} />
+            <Route path="/terminos-condiciones" element={<TermsPage />} />
+            <Route path="/politica-privacidad" element={<PrivacyPolicyPage />} />
+            <Route path="/politica-cookies" element={<CookiesPolicyPage />} />
           </Routes>
         </main>
         <Footer />
