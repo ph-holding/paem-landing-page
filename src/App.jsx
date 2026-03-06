@@ -583,7 +583,7 @@ const ProjectDetailPage = () => {
         if (!box || !img) return;
 
         gsap.set(box, { scale: 0.9 });
-        gsap.set(img, { opacity: 0, scale: 2, filter: "blur(10px)" });
+        gsap.set(img, { opacity: 0, scale: 2, filter: "blur(8px)" });
 
         gsap.to(box, {
           scale: 1,
@@ -601,6 +601,7 @@ const ProjectDetailPage = () => {
           opacity: 1,
           scale: 1,
           ease: "none",
+          filter: "blur(0px)",
           scrollTrigger: {
             trigger: item,
             start: "top 88%",
