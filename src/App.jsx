@@ -38,12 +38,22 @@ import chartLineUpIcon from "./assets/icons/chart-line-up.svg";
 import handshakeIcon from "./assets/icons/handshake.svg";
 import medalIcon from "./assets/icons/medal.svg";
 
-// Helper component to scroll to top on route change
+// Helper component to scroll to top on route change (or to hash target when present)
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1);
+      const scrollToEl = () => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      };
+      // Defer so the target route has mounted and #contacto exists in the DOM
+      const t = setTimeout(scrollToEl, 100);
+      return () => clearTimeout(t);
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -96,6 +106,15 @@ const ScrollToTopButton = () => {
 };
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
+
+  const scrollToContacto = (e) => {
+    e.preventDefault();
+    const el = document.getElementById("contacto");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 md:py-6 font-sans text-surface bg-primary/10 backdrop-blur-md border-b border-surface/10 transition-all duration-300">
       <Link
@@ -109,9 +128,19 @@ const Navbar = () => {
         <Link to="/proyectos" className="hover:opacity-60 transition-opacity">
           Proyectos
         </Link>
-        <a href="#contacto" className="hover:opacity-60 transition-opacity">
-          Contacto
-        </a>
+        {isHome ? (
+          <a
+            href="#contacto"
+            onClick={scrollToContacto}
+            className="hover:opacity-60 transition-opacity"
+          >
+            Contacto
+          </a>
+        ) : (
+          <Link to="/#contacto" className="hover:opacity-60 transition-opacity">
+            Contacto
+          </Link>
+        )}
       </div>
     </nav>
   );
@@ -231,7 +260,7 @@ const HomeIntro = () => {
   return (
     <section
       ref={container}
-      className="relative w-full h-[100dvh] bg-background flex flex-col justify-end p-6 md:p-12 overflow-hidden"
+      className="relative w-full h-[100svh] md:h-[100dvh] bg-background flex flex-col justify-end p-6 md:p-12 overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <img
@@ -241,7 +270,7 @@ const HomeIntro = () => {
         />
         <div className="absolute inset-0 bg-primary/20"></div>
       </div>
-      <div className="relative z-10 w-full h-full max-sm:mb-20 mb-5 flex flex-col justify-center md:flex-row sm:justify-between items-center gap-4 md:gap-8 pb-12">
+      <div className="relative z-10 w-full h-full max-sm:mb-24 portrait:max-sm:mb-24 mb-5 flex flex-col justify-center landscape:max-lg:flex-row landscape:max-lg:justify-between sm:flex-row sm:justify-between items-center gap-1 md:gap-8 pb-12">
         <div className="max-w-7xl text-surface select-none">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light max-w-xl leading-relaxed drop-shadow-md py-2 overflow-hidden">
             {renderChars("La vida comienza ")}
@@ -265,7 +294,7 @@ const HomeIntro = () => {
 };
 
 const HomeWelcome = () => (
-  <section className="min-h-[100dvh] py-24 px-6 md:px-12 max-w-7xl mx-auto flex flex-col justify-center">
+  <section className="min-h-[100svh] md:min-h-[100dvh] py-24 px-6 md:px-12 max-w-7xl mx-auto flex flex-col justify-center">
     <div className="grid grid-cols-1 w-full md:grid-cols-12 gap-12 items-center">
       <div className="md:col-span-5 flex flex-col justify-center">
         <h2 className="font-sans text-3xl md:text-5xl tracking-tight leading-tight mb-8">
@@ -301,14 +330,14 @@ const HomeWelcome = () => (
 );
 
 const HomeWhoWeAre = () => (
-  <section className="min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-primary text-surface flex flex-col justify-center">
-    <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
-      <div>
-        <h2 className="font-sans text-4xl md:text-6xl tracking-tight mb-8 leading-tight">
+  <section className="min-h-[100svh] md:min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-primary text-surface flex flex-col justify-center">
+    <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 landscape:max-lg:grid-cols-3 gap-12 md:gap-24">
+      <div className="landscape:max-lg:col-span-1">
+        <h2 className="font-sans text-4xl landscape:max-lg:text-2xl lg:text-6xl tracking-tight mb-8 leading-tight">
           Quiénes Somos
         </h2>
       </div>
-      <div className="font-sans text-lg md:text-xl text-surface/80 leading-relaxed font-light">
+      <div className="font-sans text-lg landscape:max-lg:text-base landscape:max-lg:col-span-2 lg:text-xl text-surface/80 leading-relaxed font-light">
         <p className="mb-6">
           Somos una firma inmobiliaria familiar especializada en la compra,
           reforma y posterior venta o alquiler de activos residenciales.
@@ -324,7 +353,7 @@ const HomeWhoWeAre = () => (
 );
 
 const HomeValues = () => (
-  <section className="relative w-full min-h-[100dvh] flex items-center justify-center p-6 text-center">
+  <section className="relative w-full min-h-[100svh] md:min-h-[100dvh] flex items-center justify-center p-6 text-center">
     <div className="absolute inset-0 z-0">
       <img
         src={bg3}
@@ -337,7 +366,7 @@ const HomeValues = () => (
       <span className="block font-mono text-xs uppercase tracking-widest text-secondary mb-12">
         Nuestros Valores
       </span>
-      <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-tight">
+      <h2 className="font-sans text-4xl landscape:max-lg:text-2xl md:text-6xl lg:text-7xl tracking-tighter leading-tight">
         Integridad,{" "}
         <span className="font-serif italic text-secondary">confianza</span>,
         esfuerzo personal y visión sostenible.
@@ -354,20 +383,20 @@ const HomeServices = () => {
     { num: "04", title: "Venta de Viviendas" },
   ];
   return (
-    <section className="min-h-[100dvh] w-full py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-border flex flex-col justify-center">
+    <section className="min-h-[100svh] md:min-h-[100dvh] w-full py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-border flex flex-col justify-center">
       <div className="mb-16">
-        <h2 className="font-sans text-3xl md:text-5xl tracking-tight">
+        <h2 className="font-sans text-3xl landscape:max-lg:text-3xl md:text-5xl tracking-tight">
           Servicios Generales
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 landscape:max-lg:grid-cols-4 max-lg:gap-x-4 max-lg:gap-y-8">
         {services.map((s, i) => (
           <div key={i} className="flex gap-8 group">
-            <span className="font-mono text-2xl text-secondary group-hover:text-primary transition-colors">
+            <span className="font-mono text-2xl landscape:max-lg:text-lg text-secondary group-hover:text-primary transition-colors">
               {s.num}
             </span>
             <div className="border-t border-primary pt-2 w-full">
-              <h3 className="font-sans text-2xl md:text-3xl tracking-tight mt-2">
+              <h3 className="font-sans text-2xl landscape:max-lg:text-base md:text-3xl tracking-tight mt-2">
                 {s.title}
               </h3>
             </div>
@@ -379,22 +408,22 @@ const HomeServices = () => {
 };
 
 const HomeOfferings = () => (
-  <section className="min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-background border-t border-border flex flex-col justify-center">
+  <section className="min-h-[100svh] md:min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-background border-t border-border flex flex-col justify-center">
     <div className="max-w-7xl w-full mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 landscape:max-lg:grid-cols-3 gap-12 md:gap-8">
         <div className="flex flex-col h-full border-l border-border pl-6">
           <span className="font-mono text-xs uppercase tracking-widest text-secondary mb-16 block">
             Misión
           </span>
           <div className="flex items-start gap-4">
-            <h3 className="font-sans text-2xl md:text-3xl tracking-tight leading-tight">
+            <h3 className="font-sans text-2xl portrait:max-sm:text-lg landscape:max-lg:text-base md:text-3xl tracking-tight leading-tight">
               Maximizar el valor del entorno construido mediante actuación
               responsable.
             </h3>
             <img
               src={chartLineUpIcon}
               alt="Chart Line Up"
-              className="w-8 h-8 transition-all duration-300 group-hover:brightness-0"
+              className="w-8 h-8 portrait:max-sm:w-6 portrait:max-sm:h-6 landscape:max-lg:w-6 landscape:max-lg:h-6 transition-all duration-300 group-hover:brightness-0"
             />
           </div>
         </div>
@@ -403,14 +432,14 @@ const HomeOfferings = () => (
             Valores
           </span>
           <div className="flex items-start gap-4">
-            <h3 className="font-sans text-2xl md:text-3xl tracking-tight leading-tight">
+            <h3 className="font-sans text-2xl portrait:max-sm:text-lg landscape:max-lg:text-base md:text-3xl tracking-tight leading-tight">
               Trasparencia total, ejecución impecable, análisis riguroso de cada
               activo.
             </h3>
             <img
               src={handshakeIcon}
               alt="Handshake"
-              className="w-8 h-8 transition-all duration-300 group-hover:brightness-0"
+              className="w-8 h-8 portrait:max-sm:w-6 portrait:max-sm:h-6 landscape:max-lg:w-6 landscape:max-lg:h-6 transition-all duration-300 group-hover:brightness-0"
             />
           </div>
         </div>
@@ -419,14 +448,14 @@ const HomeOfferings = () => (
             Visión
           </span>
           <div className="flex items-start gap-4">
-            <h3 className="font-sans text-2xl md:text-3xl tracking-tight leading-tight">
+            <h3 className="font-sans text-2xl portrait:max-sm:text-lg landscape:max-lg:text-base md:text-3xl tracking-tight leading-tight">
               Ser un referente de arquitectura y rentabilidad estructural en
               España.
             </h3>
             <img
               src={medalIcon}
               alt="Medal"
-              className="w-8 h-8 transition-all duration-300 group-hover:brightness-0"
+              className="w-8 h-8 portrait:max-sm:w-6 portrait:max-sm:h-6 landscape:max-lg:w-6 landscape:max-lg:h-6 transition-all duration-300 group-hover:brightness-0"
             />
           </div>
         </div>
@@ -436,7 +465,7 @@ const HomeOfferings = () => (
 );
 
 const HomeTeam = () => (
-  <section className="min-h-[100dvh] w-full py-24 px-6 md:px-12 text-center max-w-7xl mx-auto border-t border-border flex flex-col justify-center items-center">
+  <section className="min-h-[100svh] md:min-h-[100dvh] w-full py-24 px-6 md:px-12 text-center max-w-7xl mx-auto border-t border-border flex flex-col justify-center items-center">
     <div className="mb-20 w-full">
       <h2 className="font-sans text-3xl md:text-5xl tracking-tight">
         Nuestro Equipo
@@ -471,7 +500,7 @@ const HomeTeam = () => (
 );
 
 const HomeProjectPreview = () => (
-  <section className="min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-background border-t border-border flex flex-col justify-center">
+  <section className="min-h-[100svh] md:min-h-[100dvh] w-full py-24 px-6 md:px-12 bg-background border-t border-border flex flex-col justify-center">
     <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row gap-12 items-end justify-between mb-12">
       <h2 className="font-sans text-3xl md:text-5xl tracking-tight">
         Proyecto Destacado
@@ -512,7 +541,7 @@ const HomeProjectPreview = () => (
 const HomeContact = () => (
   <section
     id="contacto"
-    className="min-h-[100dvh] w-full py-32 md:py-48 px-6 md:px-12 bg-primary text-surface text-center flex flex-col justify-center"
+    className="min-h-[100svh] md:min-h-[100dvh] w-full py-32 md:py-48 px-6 md:px-12 bg-primary text-surface text-center flex flex-col justify-center"
   >
     <h2 className="font-sans text-4xl md:text-7xl tracking-tighter mb-20 leading-none">
       Iniciemos un diálogo.
@@ -624,7 +653,7 @@ const ProjectDetailPage = () => {
   return (
     <div className="bg-background">
       {/* Intro Hero */}
-      <div className="relative w-full h-[80dvh] pt-32 pb-12 px-6 md:px-12 flex items-end">
+      <div className="relative w-full h-[80svh] md:h-[80dvh] pt-32 pb-12 px-6 md:px-12 flex items-end">
         <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-end z-10 relative">
           <h1 className="font-sans text-6xl md:text-8xl lg:text-[10rem] tracking-tighter leading-none mb-6 text-primary">
             La Muela
@@ -750,7 +779,6 @@ const ProjectDetailPage = () => {
                   </p>
                 </div>
                 <div className="md:col-span-8">
-                  {/* Fallback to generic unsplash for apartment plans/rooms if none available */}
                   <img
                     src={type.img}
                     alt={type.title}
