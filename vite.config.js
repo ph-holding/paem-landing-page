@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
-
+import { beasties } from 'vite-plugin-beasties'
 import { cloudflare } from "@cloudflare/vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), VitePWA({
+  plugins: [
+    react(),
+    VitePWA({
     registerType: 'autoUpdate',
     workbox: {
       globPatterns: ['**/*.{js,css,html,avif,png,jpg,jpeg,webp,ico,svg}'],
@@ -26,5 +28,14 @@ export default defineConfig({
         },
       ],
     },
-  }), cloudflare()],
+  }),
+    beasties({
+      options: {
+        preload: 'swap',
+        pruneSource: false,
+        inlineThreshold: 5000,
+      },
+    }),
+    cloudflare(),
+  ],
 })

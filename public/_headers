@@ -1,0 +1,21 @@
+# Document: allow edge caching to reduce TTFB for repeat visits.
+# Do not set Cache-Control: no-transform so Cloudflare can compress (gzip/br).
+/
+  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/index.html
+  Cache-Control: public, max-age=60, stale-while-revalidate=86400
+
+# Fingerprinted assets: long cache, immutable
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Other static files from public/
+/robots.txt
+  Cache-Control: public, max-age=86400
+/logo.svg
+  Cache-Control: public, max-age=31536000, immutable
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400

@@ -19,41 +19,45 @@ const ProjectDetailPage = () => {
 
   useGSAP(
     () => {
-      const items = gsap.utils.toArray(".gallery-reveal-item");
-      items.forEach((item) => {
-        const box = item.querySelector(".gallery-reveal-box");
-        const img = item.querySelector(".gallery-reveal-img");
-        if (!box || !img) return;
+      const setup = () => {
+        const items = gsap.utils.toArray(".gallery-reveal-item");
+        items.forEach((item) => {
+          const box = item.querySelector(".gallery-reveal-box");
+          const img = item.querySelector(".gallery-reveal-img");
+          if (!box || !img) return;
 
-        gsap.set(box, { scale: 0.9 });
-        gsap.set(img, { opacity: 0, scale: 2, filter: "blur(8px)" });
+          gsap.set(box, { scale: 0.9 });
+          gsap.set(img, { opacity: 0, scale: 2, filter: "blur(8px)" });
 
-        gsap.to(box, {
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 88%",
-            end: "top 28%",
-            scrub: 0.8,
-            duration: 0.5,
-          },
+          gsap.to(box, {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 88%",
+              end: "top 28%",
+              scrub: 0.8,
+              duration: 0.5,
+            },
+          });
+
+          gsap.to(img, {
+            opacity: 1,
+            scale: 1,
+            ease: "none",
+            filter: "blur(0px)",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 88%",
+              end: "top 28%",
+              scrub: 0.8,
+              duration: 0.5,
+            },
+          });
         });
-
-        gsap.to(img, {
-          opacity: 1,
-          scale: 1,
-          ease: "none",
-          filter: "blur(0px)",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 88%",
-            end: "top 28%",
-            scrub: 0.8,
-            duration: 0.5,
-          },
-        });
-      });
+      };
+      // Defer layout reads until after paint to avoid forced reflow with React updates
+      requestAnimationFrame(() => requestAnimationFrame(setup));
     },
     { scope: galleryRef },
   );
