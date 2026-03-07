@@ -29,17 +29,6 @@ const HomeIntro = () => {
 
   useGSAP(
     () => {
-      if (
-        window.matchMedia(
-          "((max-width: 767px) and (orientation: portrait)) or ((max-height: 450px) and (orientation: landscape))",
-        ).matches
-      ) {
-        // Keep intro text visible when animation is disabled on small screens.
-        gsap.set(".intro-char", { opacity: 1, x: 0 });
-        gsap.set(".en-casa-wrap", { skewX: -14, x: -3 });
-        return;
-      }
-
       const tl = gsap.timeline({ delay: 0.3 });
 
       tl.to(".intro-char", {
@@ -96,11 +85,13 @@ const HomeIntro = () => {
         <div className="max-w-7xl select-none text-surface">
           <h1 className="max-w-xl overflow-hidden py-2 font-serif text-2xl font-light leading-relaxed drop-shadow-md max-sm:text-center sm:text-3xl md:text-4xl lg:text-5xl portrait:max-sm:text-4xl">
             {renderChars("La vida comienza ")}
-            <span className="en-casa-wrap inline-block origin-bottom-left">
-              {renderChars("en casa")}
-            </span>
-            <span className="intro-char inline-block" style={{ opacity: 0 }}>
-              .
+            <span className="block xs:inline">
+              <span className="en-casa-wrap inline-block origin-bottom-left">
+                {renderChars("en casa")}
+              </span>
+              <span className="intro-char inline-block" style={{ opacity: 0 }}>
+                .
+              </span>
             </span>
           </h1>
         </div>
