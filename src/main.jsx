@@ -1,24 +1,27 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
 if (import.meta.env.PROD) {
-  // Defer SW registration to after load so workbox is not on the critical path (shortens chain for LCP)
+  // Register SW after load + idle to keep it off the critical path.
   const registerPWA = () => {
-    import('virtual:pwa-register').then(({ registerSW }) =>
-      registerSW({ immediate: true })
-    )
-  }
-  if (document.readyState === 'complete') {
-    registerPWA()
-  } else {
-    window.addEventListener('load', registerPWA)
-  }
+    if (!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  };
+  const scheduleRegistration = () => {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(registerPWA, { timeout: 10000 });
+      return;
+    }
+    window.setTimeout(registerPWA, 3000);
+  };
+  if (document.readyState === "complete") scheduleRegistration();
+  else window.addEventListener("load", scheduleRegistration, { once: true });
 }
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);

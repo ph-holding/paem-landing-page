@@ -246,11 +246,21 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              <div
+                className="w-full min-h-[100svh] md:min-h-[100dvh] bg-background"
+                aria-hidden="true"
+              />
+            }
+          >
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/proyectos" element={<ProjectsPage />} />
-              <Route path="/proyectos/la-muela" element={<ProjectDetailPage />} />
+              <Route
+                path="/proyectos/la-muela"
+                element={<ProjectDetailPage />}
+              />
               <Route path="/terminos-condiciones" element={<TermsPage />} />
               <Route
                 path="/politica-privacidad"
@@ -262,9 +272,9 @@ function App() {
                 element={<CommunicationChannelPage />}
               />
             </Routes>
+            <Footer />
           </Suspense>
         </main>
-        <Footer />
         <ScrollToTopButton />
       </div>
     </BrowserRouter>
