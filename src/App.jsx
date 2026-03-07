@@ -11,6 +11,7 @@ import linkedinIcon from "./assets/icons/linkedin.svg";
 import facebookIcon from "./assets/icons/facebook.svg";
 import arrowUpIcon from "./assets/icons/arrow-up.svg";
 import HomePage from "./pages/HomePage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 // Lazy-loaded route pages
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage.jsx"));
@@ -271,6 +272,7 @@ function App() {
                 path="/canal-comunicacion"
                 element={<CommunicationChannelPage />}
               />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer />
           </Suspense>
