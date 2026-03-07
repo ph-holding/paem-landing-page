@@ -65,31 +65,31 @@ const ProjectDetailPage = () => {
   return (
     <div className="bg-background">
       {/* Intro Hero */}
-      <div className="relative w-full h-[80svh] md:h-[80dvh] pt-32 pb-12 px-6 md:px-12 flex items-end">
-        <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-end z-10 relative">
-          <h1 className="font-sans text-6xl md:text-8xl lg:text-[10rem] tracking-tighter leading-none mb-6 text-primary">
+      <div className="relative flex h-[80svh] w-full items-end px-6 pb-12 pt-32 md:h-[80dvh] md:px-12">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-end justify-between md:flex-row">
+          <h1 className="mb-6 font-sans text-6xl leading-none tracking-tighter text-primary md:text-8xl lg:text-[10rem]">
             La Muela
           </h1>
-          <div className="font-mono text-sm uppercase text-secondary tracking-widest mb-4">
+          <div className="mb-4 font-mono text-sm uppercase tracking-widest text-secondary">
             Zaragoza
           </div>
         </div>
       </div>
 
       {/* Project Description Block */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 border-t border-border">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div className="mx-auto max-w-7xl border-t border-border px-6 py-24 md:px-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="font-mono text-xs uppercase text-secondary mb-4">
+            <div className="mb-4 font-mono text-xs uppercase text-secondary">
               Contexto
             </div>
-            <div className="font-sans text-sm text-primary/80 border-t border-border pt-4">
+            <div className="border-t border-border pt-4 font-sans text-sm text-primary/80">
               Desarrollo de nuevas tipologías residenciales enfocadas en
               maximizar espacio y luz.
             </div>
           </div>
           <div className="md:col-span-8">
-            <p className="font-sans text-2xl md:text-4xl leading-snug tracking-tight font-light">
+            <p className="font-sans text-2xl font-light leading-snug tracking-tight md:text-4xl">
               Desarrollo residencial de 37 viviendas ubicado cerca de Zaragoza,
               con múltiples tipologías que van desde estudios hasta apartamentos
               dúplex de varios dormitorios.
@@ -99,49 +99,49 @@ const ProjectDetailPage = () => {
       </div>
 
       {/* Big Image Gallery */}
-      <div ref={galleryRef} className="w-full px-6 md:px-12 pb-24 md:pb-40">
-        <div className="max-w-[100rem] mx-auto grid grid-cols-1 gap-6 md:gap-12">
-          <div className="gallery-reveal-item w-full aspect-video overflow-hidden">
-            <div className="gallery-reveal-box w-full h-full origin-center overflow-hidden">
+      <div ref={galleryRef} className="w-full px-6 pb-24 md:px-12 md:pb-40">
+        <div className="mx-auto grid max-w-[100rem] grid-cols-1 gap-6 md:gap-12">
+          <div className="gallery-reveal-item aspect-video w-full overflow-hidden">
+            <div className="gallery-reveal-box h-full w-full origin-center overflow-hidden">
               <img
                 src={lmImg1}
                 alt="Balcony view"
-                className="gallery-reveal-img w-full h-full aspect-video object-cover origin-center"
+                className="gallery-reveal-img aspect-video h-full w-full origin-center object-cover"
                 loading="lazy"
                 decoding="async"
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-            <div className="gallery-reveal-item w-full aspect-[4/5] md:aspect-square overflow-hidden">
-              <div className="gallery-reveal-box w-full h-full origin-center overflow-hidden">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
+            <div className="gallery-reveal-item aspect-[4/5] w-full overflow-hidden md:aspect-square">
+              <div className="gallery-reveal-box h-full w-full origin-center overflow-hidden">
                 <img
                   src={lmImg6}
                   alt="Outdoor view"
-                  className="gallery-reveal-img w-full h-full aspect-[4/5] md:aspect-square object-cover origin-center"
+                  className="gallery-reveal-img aspect-[4/5] h-full w-full origin-center object-cover md:aspect-square"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             </div>
-            <div className="gallery-reveal-item w-full aspect-[4/5] md:aspect-square overflow-hidden">
-              <div className="gallery-reveal-box w-full h-full origin-center overflow-hidden">
+            <div className="gallery-reveal-item aspect-[4/5] w-full overflow-hidden md:aspect-square">
+              <div className="gallery-reveal-box h-full w-full origin-center overflow-hidden">
                 <img
                   src={lmImg3}
                   alt="Living room"
-                  className="gallery-reveal-img w-full h-full aspect-[4/5] md:aspect-square object-cover origin-center"
+                  className="gallery-reveal-img aspect-[4/5] h-full w-full origin-center object-cover md:aspect-square"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             </div>
           </div>
-          <div className="gallery-reveal-item w-full aspect-[21/9] overflow-hidden">
-            <div className="gallery-reveal-box w-full h-full origin-center overflow-hidden">
+          <div className="gallery-reveal-item aspect-[21/9] w-full overflow-hidden">
+            <div className="gallery-reveal-box h-full w-full origin-center overflow-hidden">
               <img
                 src={lmImg4}
                 alt="Terrace view"
-                className="gallery-reveal-img w-full h-full aspect-[21/9] object-cover origin-center"
+                className="gallery-reveal-img aspect-[21/9] h-full w-full origin-center object-cover"
                 loading="lazy"
                 decoding="async"
               />
@@ -151,9 +151,9 @@ const ProjectDetailPage = () => {
       </div>
 
       {/* Apartment Types */}
-      <div className="bg-primary text-surface py-24 md:py-40 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-sans text-4xl md:text-6xl tracking-tight mb-20 border-b border-surface/20 pb-12">
+      <div className="bg-primary px-6 py-24 text-surface md:px-12 md:py-40">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-20 border-b border-surface/20 pb-12 font-sans text-4xl tracking-tight md:text-6xl">
             Tipologías
           </h2>
           <div className="grid grid-cols-1 gap-24">
@@ -185,16 +185,16 @@ const ProjectDetailPage = () => {
             ].map((type, idx) => (
               <div
                 key={idx}
-                className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
+                className="grid grid-cols-1 items-start gap-12 md:grid-cols-12"
               >
-                <div className="md:col-span-4 border-t border-surface/20 pt-6">
-                  <span className="font-mono text-sm text-secondary block mb-4">
+                <div className="border-t border-surface/20 pt-6 md:col-span-4">
+                  <span className="mb-4 block font-mono text-sm text-secondary">
                     {type.tag} / TIPO
                   </span>
-                  <h3 className="font-sans text-3xl font-medium tracking-tight mb-4">
+                  <h3 className="mb-4 font-sans text-3xl font-medium tracking-tight">
                     {type.title}
                   </h3>
-                  <p className="font-sans text-surface/70 font-light">
+                  <p className="font-sans font-light text-surface/70">
                     {type.desc}
                   </p>
                 </div>
@@ -202,7 +202,7 @@ const ProjectDetailPage = () => {
                   <img
                     src={type.img}
                     alt={type.title}
-                    className="w-full grayscale opacity-80 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 hover:mix-blend-normal transition-all duration-700 object-cover aspect-video"
+                    className="aspect-video w-full object-cover opacity-80 mix-blend-luminosity grayscale transition-all duration-700 hover:opacity-100 hover:mix-blend-normal hover:grayscale-0"
                   />
                 </div>
               </div>
@@ -215,4 +215,3 @@ const ProjectDetailPage = () => {
 };
 
 export default ProjectDetailPage;
-

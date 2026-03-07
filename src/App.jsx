@@ -10,9 +10,9 @@ import {
 import linkedinIcon from "./assets/icons/linkedin.svg";
 import facebookIcon from "./assets/icons/facebook.svg";
 import arrowUpIcon from "./assets/icons/arrow-up.svg";
+import HomePage from "./pages/HomePage.jsx";
 
-// Lazy-loaded route pages (HomePage includes GSAP + home-only assets to reduce main bundle)
-const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+// Lazy-loaded route pages
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage.jsx"));
 const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage.jsx"));
 const TermsPage = lazy(() => import("./pages/TermsPage.jsx"));
@@ -106,13 +106,13 @@ const ScrollToTopButton = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50 inline-flex items-center justify-center p-5 bg-surface text-primary font-sans font-medium text-sm hover:bg-primary hover:text-surface transition-all duration-500 shadow-xl group cursor-pointer ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"}`}
+      className={`group fixed bottom-6 right-6 z-50 inline-flex cursor-pointer items-center justify-center bg-surface p-5 font-sans text-sm font-medium text-primary shadow-xl transition-all duration-500 hover:bg-primary hover:text-surface md:bottom-10 md:right-10 ${isVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-8 opacity-0"}`}
       aria-label="Volver arriba"
     >
       <img
         src={arrowUpIcon}
         alt="Scroll to top"
-        className="w-4 h-4 transition-all duration-300 group-hover:invert"
+        className="h-4 w-4 transition-all duration-300 group-hover:invert"
       />
     </button>
   );
@@ -129,30 +129,30 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 md:py-6 font-sans text-surface bg-primary/10 backdrop-blur-md border-b border-surface/10 transition-all duration-300">
+    <nav className="fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-surface/10 bg-primary/10 px-6 py-4 font-sans text-surface backdrop-blur-md transition-all duration-300 md:py-6">
       <Link
         aria-label="PAEM Real Estate Logo"
         title="PAEM Real Estate Logo"
         to="/"
-        className="flex items-center gap-2 text-xl text-surface font-bold tracking-tighter hover:opacity-60 transition-opacity"
+        className="flex items-center gap-2 text-xl font-bold tracking-tighter text-surface transition-opacity hover:opacity-60"
       >
-        <LogoIcon className="w-4 h-4 fill-current" />
-        <span className="md:block hidden">PAEM Real Estate</span>
+        <LogoIcon className="h-4 w-4 fill-current" />
+        <span className="hidden md:block">PAEM Real Estate</span>
       </Link>
-      <div className="flex items-center gap-6 md:gap-8 text-sm font-medium text-white">
-        <Link to="/proyectos" className="hover:opacity-60 transition-opacity">
+      <div className="flex items-center gap-6 text-sm font-medium text-white md:gap-8">
+        <Link to="/proyectos" className="transition-opacity hover:opacity-60">
           Proyectos
         </Link>
         {isHome ? (
           <a
             href="#contacto"
             onClick={scrollToContacto}
-            className="hover:opacity-60 transition-opacity"
+            className="transition-opacity hover:opacity-60"
           >
             Contacto
           </a>
         ) : (
-          <Link to="/#contacto" className="hover:opacity-60 transition-opacity">
+          <Link to="/#contacto" className="transition-opacity hover:opacity-60">
             Contacto
           </Link>
         )}
@@ -163,10 +163,10 @@ const Navbar = () => {
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-background border-t border-border py-12 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+    <footer className="w-full border-t border-border bg-background px-6 py-12 md:px-12">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-12 md:flex-row md:items-end">
         <div>
-          <p className="flex flex-col lg:flex-row items-start lg:items-center gap-2 font-sans font-semibold tracking-tight text-xl mb-2">
+          <p className="mb-2 flex flex-col items-start gap-2 font-sans text-xl font-semibold tracking-tight lg:flex-row lg:items-center">
             <span className="md:block">
               © {new Date().getFullYear()} PAEM Real Estate.
             </span>
@@ -175,58 +175,58 @@ const Footer = () => {
           <a
             target="_blank"
             href="https://maps.app.goo.gl/JiZkSsgzseuiE24v6"
-            className="font-mono hover:text-primary transition-colors text-secondary text-sm"
+            className="font-mono text-sm text-secondary transition-colors hover:text-primary"
           >
             Zaragoza, España
           </a>
         </div>
-        <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-12 font-sans text-sm text-secondary">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
+        <div className="flex flex-col items-start gap-6 font-sans text-sm text-secondary md:flex-row md:items-end md:gap-12">
+          <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:gap-6">
             <a
               target="_blank"
               href="https://www.facebook.com/PAEMrealestate"
               aria-label="PAEM Real Estate Facebook Page"
-              className="hover:text-primary transition-colors flex items-center gap-2 group"
+              className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
-                className="w-4 h-4 transition-all duration-300 group-hover:brightness-0"
+                className="h-4 w-4 transition-all duration-300 group-hover:brightness-0"
               />
             </a>
             <a
               target="_blank"
               href="https://www.linkedin.com/company/paemrealestate"
               aria-label="PAEM Real Estate LinkedIn Profile"
-              className="hover:text-primary transition-colors flex items-center gap-2 group"
+              className="group flex items-center gap-2 transition-colors hover:text-primary"
             >
               <img
                 src={facebookIcon}
                 alt="Facebook"
-                className="w-4 h-4 transition-all duration-300 group-hover:brightness-0"
+                className="h-4 w-4 transition-all duration-300 group-hover:brightness-0"
               />
             </a>
             <Link
               to="/terminos-condiciones"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-primary"
             >
               Términos & Condiciones
             </Link>
             <Link
               to="/politica-privacidad"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-primary"
             >
               Privacidad
             </Link>
             <Link
               to="/politica-cookies"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-primary"
             >
               Cookies
             </Link>
             <Link
               to="/canal-comunicacion"
-              className="hover:text-primary transition-colors"
+              className="transition-colors hover:text-primary"
             >
               Canal de Comunicación
             </Link>
@@ -243,13 +243,13 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <NoiseOverlay />
-      <div className="flex flex-col min-h-screen">
+      <div className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-grow">
           <Suspense
             fallback={
               <div
-                className="w-full min-h-[100svh] md:min-h-[100dvh] bg-background"
+                className="min-h-[100svh] w-full bg-background md:min-h-[100dvh]"
                 aria-hidden="true"
               />
             }

@@ -1,0 +1,12 @@
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": [
+    "clsx",
+    "cn",
+    "classnames",
+    "cls",
+    "twMerge",
+    "twMergeCss"
+  ],
+  "tailwindConfig": "./tailwind.config.js"
+}

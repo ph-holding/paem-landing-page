@@ -22,6 +22,7 @@ When the user asks to build a site (or this file is loaded into a fresh project)
 Each preset defines: `palette`, `typography`, `identity` (the overall feel), and `imageMood` (Unsplash search keywords for hero/texture images).
 
 ### Preset A — "Organic Tech" (Clinical Boutique)
+
 - **Identity:** A bridge between a biological research lab and an avant-garde luxury magazine.
 - **Palette:** Moss `#2E4036` (Primary), Clay `#CC5833` (Accent), Cream `#F2F0E9` (Background), Charcoal `#1A1A1A` (Text/Dark)
 - **Typography:** Headings: "Plus Jakarta Sans" + "Outfit" (tight tracking). Drama: "Cormorant Garamond" Italic. Data: `"IBM Plex Mono"`.
@@ -29,6 +30,7 @@ Each preset defines: `palette`, `typography`, `identity` (the overall feel), and
 - **Hero line pattern:** "[Concept noun] is the" (Bold Sans) / "[Power word]." (Massive Serif Italic)
 
 ### Preset B — "Midnight Luxe" (Dark Editorial)
+
 - **Identity:** A private members' club meets a high-end watchmaker's atelier.
 - **Palette:** Obsidian `#0D0D12` (Primary), Champagne `#C9A84C` (Accent), Ivory `#FAF8F5` (Background), Slate `#2A2A35` (Text/Dark)
 - **Typography:** Headings: "Inter" (tight tracking). Drama: "Playfair Display" Italic. Data: `"JetBrains Mono"`.
@@ -36,6 +38,7 @@ Each preset defines: `palette`, `typography`, `identity` (the overall feel), and
 - **Hero line pattern:** "[Aspirational noun] meets" (Bold Sans) / "[Precision word]." (Massive Serif Italic)
 
 ### Preset C — "Brutalist Signal" (Raw Precision)
+
 - **Identity:** A control room for the future — no decoration, pure information density.
 - **Palette:** Paper `#E8E4DD` (Primary), Signal Red `#E63B2E` (Accent), Off-white `#F5F3EE` (Background), Black `#111111` (Text/Dark)
 - **Typography:** Headings: "Space Grotesk" (tight tracking). Drama: "DM Serif Display" Italic. Data: `"Space Mono"`.
@@ -43,6 +46,7 @@ Each preset defines: `palette`, `typography`, `identity` (the overall feel), and
 - **Hero line pattern:** "[Direct verb] the" (Bold Sans) / "[System noun]." (Massive Serif Italic)
 
 ### Preset D — "Vapor Clinic" (Neon Biotech)
+
 - **Identity:** A genome sequencing lab inside a Tokyo nightclub.
 - **Palette:** Deep Void `#0A0A14` (Primary), Plasma `#7B61FF` (Accent), Ghost `#F0EFF4` (Background), Graphite `#18181B` (Text/Dark)
 - **Typography:** Headings: "Sora" (tight tracking). Drama: "Instrument Serif" Italic. Data: `"Fira Code"`.
@@ -56,15 +60,18 @@ Each preset defines: `palette`, `typography`, `identity` (the overall feel), and
 These rules apply to ALL presets. They are what make the output premium.
 
 ### Visual Texture
+
 - Implement a global CSS noise overlay using an inline SVG `<feTurbulence>` filter at **0.05 opacity** to eliminate flat digital gradients.
 - Use a `rounded-[2rem]` to `rounded-[3rem]` radius system for all containers. No sharp corners anywhere.
 
 ### Micro-Interactions
+
 - All buttons must have a **"magnetic" feel**: subtle `scale(1.03)` on hover with `cubic-bezier(0.25, 0.46, 0.45, 0.94)`.
 - Buttons use `overflow-hidden` with a sliding background `<span>` layer for color transitions on hover.
 - Links and interactive elements get a `translateY(-1px)` lift on hover.
 
 ### Animation Lifecycle
+
 - Use `gsap.context()` within `useEffect` for ALL animations. Return `ctx.revert()` in the cleanup function.
 - Default easing: `power3.out` for entrances, `power2.inOut` for morphs.
 - Stagger value: `0.08` for text, `0.15` for cards/containers.
@@ -74,11 +81,14 @@ These rules apply to ALL presets. They are what make the output premium.
 ## Component Architecture (NEVER CHANGE STRUCTURE — only adapt content/colors)
 
 ### A. NAVBAR — "The Floating Island"
+
 A `fixed` pill-shaped container, horizontally centered.
+
 - **Morphing Logic:** Transparent with light text at hero top. Transitions to `bg-[background]/60 backdrop-blur-xl` with primary-colored text and a subtle `border` when scrolled past the hero. Use `IntersectionObserver` or ScrollTrigger.
 - Contains: Logo (brand name as text), 3-4 nav links, CTA button (accent color).
 
 ### B. HERO SECTION — "The Opening Shot"
+
 - `100dvh` height. Full-bleed background image (sourced from Unsplash matching preset's `imageMood`) with a heavy **primary-to-black gradient overlay** (`bg-gradient-to-t`).
 - **Layout:** Content pushed to the **bottom-left third** using flex + padding.
 - **Typography:** Large scale contrast following the preset's hero line pattern. First part in bold sans heading font. Second part in massive serif italic drama font (3-5x size difference).
@@ -86,6 +96,7 @@ A `fixed` pill-shaped container, horizontally centered.
 - CTA button below the headline, using the accent color.
 
 ### C. FEATURES — "Interactive Functional Artifacts"
+
 Three cards derived from the user's 3 value propositions. These must feel like **functional software micro-UIs**, not static marketing cards. Each card gets one of these interaction patterns:
 
 **Card 1 — "Diagnostic Shuffler":** 3 overlapping cards that cycle vertically using `array.unshift(array.pop())` logic every 3 seconds with a spring-bounce transition (`cubic-bezier(0.34, 1.56, 0.64, 1)`). Labels derived from user's first value prop (generate 3 sub-labels).
@@ -97,6 +108,7 @@ Three cards derived from the user's 3 value propositions. These must feel like *
 All cards: `bg-[background]` surface, subtle border, `rounded-[2rem]`, drop shadow. Each card has a heading (sans bold) and a brief descriptor.
 
 ### D. PHILOSOPHY — "The Manifesto"
+
 - Full-width section with the **dark color** as background.
 - A parallaxing organic texture image (Unsplash, `imageMood` keywords) at low opacity behind the text.
 - **Typography:** Two contrasting statements. Pattern:
@@ -105,7 +117,9 @@ All cards: `bg-[background]` surface, subtle border, `rounded-[2rem]`, drop shad
 - **Animation:** GSAP `SplitText`-style reveal (word-by-word or line-by-line fade-up) triggered by ScrollTrigger.
 
 ### E. PROTOCOL — "Sticky Stacking Archive"
+
 3 full-screen cards that stack on scroll.
+
 - **Stacking Interaction:** Using GSAP ScrollTrigger with `pin: true`. As a new card scrolls into view, the card underneath scales to `0.9`, blurs to `20px`, and fades to `0.5`.
 - **Each card gets a unique canvas/SVG animation:**
   1. A slowly rotating geometric motif (double-helix, concentric circles, or gear teeth).
@@ -114,11 +128,13 @@ All cards: `bg-[background]` surface, subtle border, `rounded-[2rem]`, drop shad
 - Card content: Step number (monospace), title (heading font), 2-line description. Derive from user's brand purpose.
 
 ### F. MEMBERSHIP / PRICING
+
 - Three-tier pricing grid. Card names: "Essential", "Performance", "Enterprise" (adjust to fit brand).
 - **Middle card pops:** Primary-colored background with an accent CTA button. Slightly larger scale or `ring` border.
 - If pricing doesn't apply, convert this into a "Get Started" section with a single large CTA.
 
 ### G. FOOTER
+
 - Deep dark-colored background, `rounded-t-[4rem]`.
 - Grid layout: Brand name + tagline, navigation columns, legal links.
 - **"System Operational" status indicator** with a pulsing green dot and monospace label.

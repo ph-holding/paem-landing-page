@@ -3,35 +3,35 @@ import { Link } from "react-router-dom";
 import projectLm from "../paem-assets/backgrounds/project-lm.avif";
 
 const ProjectsPage = () => (
-  <div className="pt-32 min-h-[80vh]">
-    <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24">
-      <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-24">
+  <div className="min-h-[80vh] pt-32">
+    <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-24">
+      <h1 className="mb-24 font-sans text-5xl tracking-tighter md:text-7xl">
         Proyectos
       </h1>
       <div className="grid grid-cols-1 gap-16 md:gap-32">
         {/* Project 1 */}
         <div className="group">
-          <div className="relative w-full aspect-video md:aspect-[16/7] overflow-hidden bg-border mb-8">
+          <div className="relative mb-8 aspect-video w-full overflow-hidden bg-border md:aspect-[16/7]">
             <img
               src={projectLm}
               alt="La Muela"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               fetchPriority="high"
               decoding="async"
             />
           </div>
-          <div className="flex justify-between items-end border-t border-border pt-6">
+          <div className="flex items-end justify-between border-t border-border pt-6">
             <div>
-              <h2 className="font-sans text-3xl md:text-5xl tracking-tight mb-2">
+              <h2 className="mb-2 font-sans text-3xl tracking-tight md:text-5xl">
                 La Muela
               </h2>
-              <p className="font-mono text-sm uppercase text-secondary tracking-widest">
+              <p className="font-mono text-sm uppercase tracking-widest text-secondary">
                 Residencial / Zaragoza
               </p>
             </div>
             <Link
               to="/proyectos/la-muela"
-              className="inline-block border border-primary px-6 py-3 font-sans text-sm hover:bg-primary hover:text-surface transition-colors"
+              className="inline-block border border-primary px-6 py-3 font-sans text-sm transition-colors hover:bg-primary hover:text-surface"
             >
               Ver Proyecto
             </Link>
@@ -43,4 +43,3 @@ const ProjectsPage = () => (
 );
 
 export default ProjectsPage;
-

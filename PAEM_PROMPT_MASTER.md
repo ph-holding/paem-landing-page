@@ -40,7 +40,7 @@ Minimalism
 Architectural editorial layouts  
 Brutalist spacing  
 Large typography  
-Very large imagery  
+Very large imagery
 
 The site must avoid:
 
@@ -75,7 +75,6 @@ Final structure:
 1. Home
 2. Projects
 3. Project Detail
-
 
 There will be **NO separate Contact page anymore**.
 
@@ -232,7 +231,7 @@ Example:
 
 01 — Acquisition  
 02 — Rehabilitation  
-03 — Rental / Sale  
+03 — Rental / Sale
 
 This makes the section feel more architectural and less corporate.
 
@@ -295,7 +294,6 @@ Ver proyecto
 This links to:
 
 /projects/la-muela
-
 
 ---
 
@@ -379,7 +377,7 @@ Sections:
 Intro  
 Project description  
 Gallery  
-Apartment types  
+Apartment types
 
 ---
 
@@ -462,7 +460,7 @@ Follow these principles strictly.
 2 — Large imagery  
 3 — Brutalist spacing  
 4 — Architectural composition  
-5 — Typography first  
+5 — Typography first
 
 Avoid:
 

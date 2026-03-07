@@ -2,17 +2,17 @@ import React from "react";
 
 const CommunicationChannelPage = () => {
   return (
-    <div className="pt-32 min-h-[80vh] bg-background">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
-        <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-8 leading-none">
+    <div className="min-h-[80vh] bg-background pt-32">
+      <div className="mx-auto max-w-4xl px-6 py-12 md:px-12 md:py-24">
+        <h1 className="mb-8 font-sans text-5xl leading-none tracking-tighter md:text-7xl">
           Canal de Comunicación y Denuncias
         </h1>
-        <p className="font-sans text-secondary text-lg mb-20 font-light">
+        <p className="mb-20 font-sans text-lg font-light text-secondary">
           Última actualización: {new Date().toLocaleDateString("es-ES")}
         </p>
 
         <div className="flex flex-col gap-16">
-          <p className="font-sans text-lg text-primary/80 font-light leading-relaxed">
+          <p className="font-sans text-lg font-light leading-relaxed text-primary/80">
             De acuerdo con el Canal de Comunicación y Denuncias previsto en la
             Política de Prevención de Delitos (Compliance Penal) de PAEM Real
             Estate, cualquier persona interesada puede comunicar posibles
@@ -64,4 +64,3 @@ const CommunicationChannelPage = () => {
 };
 
 export default CommunicationChannelPage;
-

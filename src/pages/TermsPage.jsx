@@ -45,7 +45,7 @@ const TermsPage = () => {
           El tratamiento de los datos personales se rige por lo dispuesto en la{" "}
           <Link
             to="/politica-privacidad"
-            className="underline hover:opacity-60 transition-opacity"
+            className="underline transition-opacity hover:opacity-60"
           >
             Política de Privacidad
           </Link>{" "}
@@ -67,23 +67,23 @@ const TermsPage = () => {
   ];
 
   return (
-    <div className="pt-32 min-h-[80vh] bg-background">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
-        <h1 className="font-sans text-5xl md:text-7xl tracking-tighter mb-8 leading-none">
+    <div className="min-h-[80vh] bg-background pt-32">
+      <div className="mx-auto max-w-4xl px-6 py-12 md:px-12 md:py-24">
+        <h1 className="mb-8 font-sans text-5xl leading-none tracking-tighter md:text-7xl">
           Términos y Condiciones
         </h1>
-        <p className="font-sans text-secondary text-lg mb-20 font-light">
+        <p className="mb-20 font-sans text-lg font-light text-secondary">
           Última actualización: {new Date().toLocaleDateString("es-ES")}
         </p>
 
         <div className="flex flex-col gap-16">
           {sections.map((sec, i) => (
             <div key={i} className="border-t border-border pt-8">
-              <h2 className="font-sans text-2xl tracking-tight mb-6 font-medium text-primary">
+              <h2 className="mb-6 font-sans text-2xl font-medium tracking-tight text-primary">
                 {sec.title}
               </h2>
               <p
-                className={`font-sans text-lg text-primary/80 font-light leading-relaxed ${
+                className={`font-sans text-lg font-light leading-relaxed text-primary/80 ${
                   typeof sec.content === "string" ? "whitespace-pre-line" : ""
                 }`}
               >
@@ -98,4 +98,3 @@ const TermsPage = () => {
 };
 
 export default TermsPage;
-
