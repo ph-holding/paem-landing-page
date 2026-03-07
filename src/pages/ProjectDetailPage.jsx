@@ -3,14 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import lmImg1 from "../paem-assets/projects/la-muela/img-01.avif";
-import lmImg3 from "../paem-assets/projects/la-muela/img-03.avif";
-import lmImg4 from "../paem-assets/projects/la-muela/img-04.avif";
-import lmImg6 from "../paem-assets/projects/la-muela/img-06.avif";
-import lmImgType1 from "../paem-assets/projects/la-muela/plm-01.avif";
-import lmImgType2 from "../paem-assets/projects/la-muela/plm-02.avif";
-import lmImgType3 from "../paem-assets/projects/la-muela/plm-03.avif";
-import lmImgType4 from "../paem-assets/projects/la-muela/plm-04.avif";
+import lmImg1 from "../assets/images/projects/la-muela/img-01.avif";
+import lmImg3 from "../assets/images/projects/la-muela/img-03.avif";
+import lmImg4 from "../assets/images/projects/la-muela/img-04.avif";
+import lmImg6 from "../assets/images/projects/la-muela/img-06.avif";
+import lmImgType1 from "../assets/images/projects/la-muela/plm-01.avif";
+import lmImgType2 from "../assets/images/projects/la-muela/plm-02.avif";
+import lmImgType3 from "../assets/images/projects/la-muela/plm-03.avif";
+import lmImgType4 from "../assets/images/projects/la-muela/plm-04.avif";
 
 gsap.registerPlugin(ScrollTrigger);
 

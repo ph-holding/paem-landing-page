@@ -1,16 +1,77 @@
-# React + Vite
+# PAEM Real Estate Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal, architectural real-estate website for PAEM Real Estate (Zaragoza, Spain), built with React + Vite and deployed on Cloudflare Workers.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19
+- Vite 7
+- Tailwind CSS 3.4
+- GSAP + ScrollTrigger (`gsap`, `@gsap/react`)
+- React Router
+- Cloudflare Vite plugin + Wrangler
+- PWA (`vite-plugin-pwa`)
+- Critical CSS inlining (`vite-plugin-beasties`)
 
-## React Compiler
+## Available scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `npm run dev` -> local development
+- `npm run lint` -> lint source files
+- `npm run audit:check` -> fail on high/critical vulnerabilities
+- `npm run build` -> audit check + production build
+- `npm run preview` -> local Workers preview (`wrangler dev`)
+- `npm run deploy` -> deploy via Wrangler
 
-## Expanding the ESLint configuration
+## Routes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `/` -> Home
+- `/proyectos` -> Projects list
+- `/proyectos/la-muela` -> Project detail
+- `/terminos-condiciones` -> Terms
+- `/politica-privacidad` -> Privacy policy
+- `/politica-cookies` -> Cookies policy
+- `/canal-comunicacion` -> Communication channel
+
+## Architecture notes
+
+- `src/App.jsx` contains the app shell (router, navbar, footer, utility UI).
+- `src/pages/HomePage.jsx` contains the home sections and home-specific GSAP behavior.
+- Home route is eager-loaded for instant first paint; secondary routes are lazy-loaded.
+- Suspense fallback reserves space to avoid layout shifts while lazy routes resolve.
+
+## Performance and SEO baseline (implemented)
+
+- Valid meta description in `index.html`.
+- Valid `robots.txt` in `public/robots.txt`.
+- Non-blocking Google Fonts loading strategy.
+- Critical CSS inlining and stylesheet async swap through Beasties.
+- PWA enabled with Workbox runtime caching (including Google Fonts).
+- Service worker registration deferred to post-load + idle in `src/main.jsx` to keep it off the critical path.
+- Caching and security headers configured in `public/_headers`:
+  - short-lived document caching with `stale-while-revalidate`
+  - immutable caching for fingerprinted assets
+  - basic hardening headers
+- SVG favicon configured (`/logo.svg`).
+
+## Responsive behavior
+
+- Tailwind custom breakpoints (`xs` through `5xl`) are defined in `tailwind.config.js`.
+- GSAP section pinning on home is disabled on constrained mobile conditions:
+  - `(max-width: 767px && portrait)` OR `(max-height: 450px && landscape)`
+
+## Deployment
+
+This project targets Cloudflare Workers with static assets:
+
+- Config: `wrangler.jsonc`
+- SPA fallback: `assets.not_found_handling = "single-page-application"`
+- Build artifacts are generated to `dist/`
+
+Deploy flow:
+
+1. `npm run build`
+2. `npm run deploy`
+
+## Development guidance
+
+If you are extending this project, read `SKILLS.md` first. It contains the consolidated project playbook (design system, animation constraints, performance guardrails, and implementation checklist).
