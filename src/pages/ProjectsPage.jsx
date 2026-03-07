@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import projectLm from "../paem-assets/backgrounds/project-lm.avif";
+import projectLm from "../assets/images/projects/la-muela/lm-landscape.avif";
 
 const ProjectsPage = () => (
   <div className="min-h-[80vh] pt-32">
