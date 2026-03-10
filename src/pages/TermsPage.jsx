@@ -16,7 +16,7 @@ const TermsPage = () => {
     {
       title: "3. Condiciones de uso",
       content:
-        "El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación de las presentes condiciones de uso. \nEl usuario se compromete a hacer un uso adecuado del sitio web y a no utilizarlo para:\n\n\t- realizar actividades ilícitas o contrarias a la buena fe\n\t- provocar daños en los sistemas del sitio web\n\t- introducir virus o software malicioso\n\t- intentar acceder a datos restringidos",
+        "El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación de las presentes condiciones de uso. \nEl usuario se compromete a hacer un uso adecuado del sitio web y a no utilizarlo para:\n\n\t- Realizar actividades ilícitas o contrarias a la buena fe.\n\t- Provocar daños en los sistemas del sitio web.\n\t- Introducir virus o software malicioso.\n\t- Intentar acceder a datos restringidos.",
     },
     {
       title: "4. Propiedad intelectual",
