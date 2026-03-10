@@ -22,13 +22,13 @@ const CommunicationChannelPage = () => {
             Este canal está disponible tanto para personas vinculadas a la
             organización como para terceros ajenos a ella, incluyendo:
             <br />
-            - trabajadores por cuenta ajena o autónomos
+            - Trabajadores por cuenta ajena o autónomos.
             <br />
-            - empresas asociadas
+            - Empresas asociadas.
             <br />
-            - proveedores y profesionales colaboradores
+            - Proveedores y profesionales colaboradores.
             <br />
-            - cualquier otro grupo de interés
+            - Cualquier otro grupo de interés.
             <br />
             <br />
             A través de este canal se pueden comunicar hechos, conductas o

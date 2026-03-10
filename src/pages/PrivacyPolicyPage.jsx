@@ -15,12 +15,12 @@ const PrivacyPolicyPage = () => {
     {
       title: "3. Datos personales que se recogen",
       content:
-        "PAEM Real Estate podrá recopilar los siguientes datos personales a través del sitio web:\n\n\t- nombre\n\t- correo electrónico\n\t- número de teléfono\n\t- cualquier información facilitada voluntariamente por el usuario mediante contacto directo",
+        "PAEM Real Estate podrá recopilar los siguientes datos personales a través del sitio web:\n\n\t- Nombre.\n\t- Correo electrónico.\n\t- Número de teléfono.\n\t- Cualquier información facilitada voluntariamente por el usuario mediante contacto directo.",
     },
     {
       title: "4. Finalidad del tratamiento",
       content:
-        "Los datos personales recogidos se utilizarán para:\n\n\t- responder a consultas realizadas por los usuarios\n\t- proporcionar información sobre proyectos inmobiliarios\n\t- gestionar comunicaciones con clientes o potenciales clientes",
+        "Los datos personales recogidos se utilizarán para:\n\n\t- Responder a consultas realizadas por los usuarios.\n\t- Proporcionar información sobre proyectos inmobiliarios.\n\t- Gestionar comunicaciones con clientes o potenciales clientes.",
     },
     {
       title: "5. Base jurídica",
@@ -35,7 +35,7 @@ const PrivacyPolicyPage = () => {
     {
       title: "7. Cesión de datos a terceros",
       content:
-        "Los datos personales no se cederán a terceros salvo en los siguientes casos:\n\n- cuando exista obligación legal\n- cuando sea necesario para la prestación de servicios vinculados a la actividad de la empresa",
+        "Los datos personales no se cederán a terceros salvo en los siguientes casos:\n\n- Cuando exista obligación legal.\n- Cuando sea necesario para la prestación de servicios vinculados a la actividad de la empresa.",
     },
     {
       title: "8. Derechos del usuario",
@@ -43,17 +43,17 @@ const PrivacyPolicyPage = () => {
         <span>
           El usuario puede ejercer en cualquier momento los siguientes derechos:
           <br />
-          - derecho de acceso
+          - Derecho de acceso.
           <br />
-          - derecho de rectificación
+          - Derecho de rectificación.
           <br />
-          - derecho de supresión
+          - Derecho de supresión.
           <br />
-          - derecho de limitación del tratamiento
+          - Derecho de limitación del tratamiento.
           <br />
-          - derecho de oposición
+          - Derecho de oposición.
           <br />
-          - derecho a la portabilidad de los datos
+          - Derecho a la portabilidad de los datos.
           <br />
           Para ejercer estos derechos, el usuario puede enviar una solicitud a:
           <br />

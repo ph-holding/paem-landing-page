@@ -256,22 +256,6 @@ const HomeOfferings = () => (
         </div>
         <div className="flex h-full flex-col border-l border-border pl-6">
           <span className="mb-16 block font-mono text-xs uppercase tracking-widest text-secondary">
-            Valores
-          </span>
-          <div className="flex items-start gap-4">
-            <h3 className="font-sans text-2xl leading-tight tracking-tight md:text-3xl portrait:max-sm:text-lg landscape:max-lg:text-base">
-              Trasparencia total, ejecución impecable, análisis riguroso de cada
-              activo.
-            </h3>
-            <img
-              src={handshakeIcon}
-              alt="Handshake"
-              className="h-8 w-8 transition-all duration-300 group-hover:brightness-0 portrait:max-sm:h-6 portrait:max-sm:w-6 landscape:max-lg:h-6 landscape:max-lg:w-6"
-            />
-          </div>
-        </div>
-        <div className="flex h-full flex-col border-l border-border pl-6">
-          <span className="mb-16 block font-mono text-xs uppercase tracking-widest text-secondary">
             Visión
           </span>
           <div className="flex items-start gap-4">
@@ -282,6 +266,22 @@ const HomeOfferings = () => (
             <img
               src={medalIcon}
               alt="Medal"
+              className="h-8 w-8 transition-all duration-300 group-hover:brightness-0 portrait:max-sm:h-6 portrait:max-sm:w-6 landscape:max-lg:h-6 landscape:max-lg:w-6"
+            />
+          </div>
+        </div>
+        <div className="flex h-full flex-col border-l border-border pl-6">
+          <span className="mb-16 block font-mono text-xs uppercase tracking-widest text-secondary">
+            Valores
+          </span>
+          <div className="flex items-start gap-4">
+            <h3 className="font-sans text-2xl leading-tight tracking-tight md:text-3xl portrait:max-sm:text-lg landscape:max-lg:text-base">
+              Trasparencia total, ejecución impecable, análisis riguroso de cada
+              activo.
+            </h3>
+            <img
+              src={handshakeIcon}
+              alt="Handshake"
               className="h-8 w-8 transition-all duration-300 group-hover:brightness-0 portrait:max-sm:h-6 portrait:max-sm:w-6 landscape:max-lg:h-6 landscape:max-lg:w-6"
             />
           </div>

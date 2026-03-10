@@ -26,7 +26,7 @@ const TermsPage = () => {
     {
       title: "5. Exclusión de responsabilidad",
       content:
-        "PAEM Real Estate no se responsabiliza de:\n\n\t- posibles errores en la información publicada\n\t- interrupciones del servicio del sitio web\n\t- daños derivados del uso del sitio web\n\nLa empresa se reserva el derecho a modificar los contenidos del sitio web en cualquier momento.",
+        "PAEM Real Estate no se responsabiliza de:\n\n\t- Posibles errores en la información publicada.\n\t- Interrupciones del servicio del sitio web.\n\t- Daños derivados del uso del sitio web.\n\nLa empresa se reserva el derecho a modificar los contenidos del sitio web en cualquier momento.",
     },
     {
       title: "6. Exactitud de la información de proyectos",
