@@ -11,8 +11,8 @@
   "compatibility_flags": ["nodejs_compat"],
   "routes": [
     {
-      "pattern": "paem.es",
-      "custom_domain": true,
+      "pattern": "paem.es/*",
+      "zone_name": "paem.es",
     },
   ],
 }
